@@ -71,24 +71,7 @@ class Project:
             query = 'INSERT INTO project (client, jobName, projectNumber, projectManager, projectEngineer, projectDesigner, caddLead) VALUES (%(client)s, %(jobName)s, %(projectNumber)s, %(projectManager)s, %(projectEngineer)s, %(projectDesigner)s, %(caddLead)s);'
             return = connectToMySQL(cls.db).query_db(query, data)
 
-    @classmethod
-        def projectUser(cls, data):
-            query = 'SELECT * FROM project LEFT JOIN user on project.user_id = user.id WHERE project.id = %(id)s;'
-            results = connectToMySQL(cls.db).query_db(query, data)
-            for row in results:
-                project = cls(row)
-                userData = {
-                    'id': row['user.id'],
-                    'firstName': row['firstName'],
-                    'lastName': row['lastName'],
-                    'company': row['company'],
-                    'email': row['email'],
-                    'password': row['password'],
-                    'createdAt': row['user.createdAt'],
-                    'updatedAt': row['user.updatedAt']
-                }
-                project.user = user.User(userData)
-            return project
+
     
 
         
