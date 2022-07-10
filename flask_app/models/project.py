@@ -1,6 +1,6 @@
 from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
-from flask_app.models import user
+
 
 class Project:
     db = 'projectmanager'
@@ -17,7 +17,7 @@ class Project:
         self.user_id = data['user_id']
 
     @staticmethod
-        def validate(project):
+    def validate(project):
             isValid = True
             if len(project['client']) < 3:
                 isValid = False
@@ -40,7 +40,7 @@ class Project:
             return isValid
 
     @classmethod
-        def getAll(cls):
+    def getAll(cls):
             query = 'SELECT * FROM project;'
             results = connectToMySQL(cls.db).query_db(query)
             project = []
@@ -49,7 +49,7 @@ class Project:
             return project
 
     @classmethod
-        def getOne(cls,data):
+    def getOne(cls,data):
             query = "SELECT * FROM project WHERE id = %(id)s;"
             results = connectToMySQL(cls.db).query_db(query, data)
             if len(results) < 1:
@@ -57,19 +57,19 @@ class Project:
             return cls(results[0])
 
     @classmethod
-        def update(cls,data):
+    def update(cls,data):
             query = 'UPDATE project SET client=%(client)s, jobName=%(jobName)s, projectNumber=%(projectNumber)s, projectManager=%(projectManager)s, projectEngineer=%(projectEngineer)s, projectDesigner=%(projectDesigner)s, caddLead=%(caddLead)s;'
             return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod
-        def delete(cls, data):
+    def delete(cls, data):
             query = 'DELETE FROM project WHERE id = %(id)s;'
             return connectToMySQL(cls.db).query_db(query, data)
 
     @classmethod
-        def save(cls,data):
+    def save(cls,data):
             query = 'INSERT INTO project (client, jobName, projectNumber, projectManager, projectEngineer, projectDesigner, caddLead) VALUES (%(client)s, %(jobName)s, %(projectNumber)s, %(projectManager)s, %(projectEngineer)s, %(projectDesigner)s, %(caddLead)s);'
-            return = connectToMySQL(cls.db).query_db(query, data)
+            return connectToMySQL(cls.db).query_db(query, data)
 
 
     
