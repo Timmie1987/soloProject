@@ -4,21 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <title>Document</title>
 </head>
 <body>
-    <header>
-        <nav>
-            {% block menu %} {% include 'menu.html' %} {% endblock menu %}
-        </nav>
-    </header>
-    <main>
-
-    </main>
-    <footer>
-
-    </footer>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js')}}"></script>
+    <div>
+        <form action="/register" method="post">
+            <h2>Register</h2>
+            {% with messages = get_flashed_messages(category_filter=['register']) %}
+                {% if messages %}
+                <div>
+                    <strong>Flash AHHHHHHH!!!!</strong>
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+            <div>
+                <label for="firstName">First Name:</label>
+                <input type="text" name="firstName">
+            </div>
+            <div>
+                <label for="lastName">Last Name:</label>
+                <input type="text" name="lastName">
+            </div>
+            <div>
+                <label for="company">Company:</label>
+                <input type="text" name="company">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" name="email">
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" name="password">
+            </div>
+            <div>
+                <label for="confirm">Confirm Password:</label>
+                <input type="password" name="confirm">
+            </div>
+            <input type="submit" value="Register">
+        </form>
+        
+    </div>
 </body>
 </html>

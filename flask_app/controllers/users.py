@@ -13,7 +13,7 @@ def index():
 @app.route('/register',methods=['POST'])
 def register():
 
-    if not User.validate_register(request.form):
+    if not User.validate(request.form):
         return redirect('/')
     data ={ 
         "firstName": request.form['firstName'],

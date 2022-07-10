@@ -40,13 +40,13 @@ class Project:
             return isValid
 
     @classmethod
-    def getAll(cls):
-            query = 'SELECT * FROM project;'
+    def getAll(data):
+            query = "SELECT * FROM project;"
             results = connectToMySQL(cls.db).query_db(query)
-            project = []
+            allprojects = []
             for row in results:
-                project.append(cls(row))
-            return project
+                allprojects.append(cls(row))
+            return allprojects
 
     @classmethod
     def getOne(cls,data):
