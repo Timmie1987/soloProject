@@ -10,11 +10,15 @@ bcrypt = Bcrypt(app)
 def index():
     return render_template('index.html')
 
+@app.route('/register')
+def registerUser():
+    return render_template('register.html')
+
 @app.route('/register',methods=['POST'])
 def register():
 
-    if not User.validate(request.form):
-        return redirect('/')
+    if not User.validate_register(request.form):
+        return redirect('/register')
     data ={ 
         "firstName": request.form['firstName'],
         "lastName": request.form['lastName'],
@@ -47,7 +51,7 @@ def dashboard():
     data ={
         'id': session['user_id']
     }
-    return render_template("dashboard.html", user=User.getOne(data), project=Project.getAll(data))
+    return render_template("dashboard.html", user=User.getOne(data), project=Project.getAll())
 
 @app.route('/logout')
 def logout():

@@ -17,7 +17,7 @@ class User:
         self.project = None
 
     @classmethod
-    def getAll(data):
+    def getAll(cls):
         query = 'SELECT * FROM user;'
         results = connectToMySQL(cls.db).query_db(query)
         user = []
@@ -47,28 +47,36 @@ class User:
         return connectToMySQL(cls.db).query_db(query, data)
 
     @staticmethod
-    def validate(user):
+    def validate_register(user):
         isValid = True
         query = 'SELECT * FROM user WHERE email = %(email)s;'
         results = connectToMySQL(User.db).query_db(query, user)
         if len(results) >= 1:
+            flash("That email is already taken","register")
             isValid = False
-            flash("That email is already taken")
+            
         if not EMAIL_REGEX.match(user['email']):
+            flash("Invalid email","register")
             isValid = False
-            flash("Invalid email")
+            
         if len(user['firstName']) < 3:
+            flash("First name must be more than 3 characters","register")
             isValid = False
-            flash("First name must be more than 3 characters")
+            
         if len(user['lastName']) < 3:
+            flash("Last name must be more than 3 characters","register")
             isValid = False
-            flash("Last name must be more than 3 characters")
+            
         if len(user['password']) < 8:
+            flash("Password must be more than 8 characters","register")
             isValid = False
-            flash("Password must be more than 8 characters")
+            
         if user['password'] != user['confirm']:
+            flash("Passwords do not match","register")
             isValid = False
-            flash('Passwords do not match')
+            
         return isValid
+
+    
 
 

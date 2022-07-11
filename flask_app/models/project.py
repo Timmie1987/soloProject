@@ -6,11 +6,11 @@ class Project:
     db = 'projectmanager'
     def __init__(self, data):
         self.id = data['id']
-        self.client = data['firstName']
-        self.projectNumber = data['lastName']
-        self.projectManager = data['company']
-        self.projectEngineer = data['email']
-        self.projectDesigner = data['password']
+        self.client = data['client']
+        self.projectNumber = data['projectNumber']
+        self.projectManager = data['projectManager']
+        self.projectEngineer = data['projectEngineer']
+        self.projectDesigner = data['projectDesigner']
         self.caddLead = data['caddLead']
         self.createdAt = data['createdAt']
         self.updatedAt = data['updatedAt']
@@ -40,7 +40,7 @@ class Project:
             return isValid
 
     @classmethod
-    def getAll(data):
+    def getAll(cls):
             query = "SELECT * FROM project;"
             results = connectToMySQL(cls.db).query_db(query)
             allprojects = []
