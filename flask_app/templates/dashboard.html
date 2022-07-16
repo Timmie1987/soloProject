@@ -4,43 +4,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
     <title>Dashboard</title>
     
 </head>
-<body>
-    <nav>
-        <h1>Welcome {{user.firstName}}!</h1>
-        <div>
-            <a href="/new/project">Add Project</a>
-            <a href="/logout">Logout</a>
+<body style="background-color: darkgray">
+    <div class="banner">
+        <h2>Welcome {{user.firstName}}!</h2>
+        <h1 class="header">Project Manager</h1>
+            <div>
+            <a href="/new/project"><input type="button" value="Add Project" class="btn btn-outline-success me-2"></a>
+            <a href="/logout"><input type="button" value="Logout" class="btn btn-outline-success me-2"></a>
+            </div>
+    </div>
 
-        </div>
+    <div class="text-center">
+        <div class="container">
 
-    </nav>
-    <div>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Job Name</th>
-                    <th>Project Number</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for project in project %}
+            <table class="table table-striped">
+                <thead>
                     <tr>
-                        <td>{{project.jobName}}</td>
-                        <td>{{project.projectNumber}}</td>
-                        <td>
-                            <a href="/project/{{project.id}}">View Tasks</a>
-                            <a href="/edit/project/{{project.id}}">Edit</a>
-                            <a href="/destroy/project/{{project.id}}">Complete Project</a>
-                        </td>
+                        <th>Job Name</th>
+                        <th>Project Number</th>
+                        <th>Actions</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {% for project in project %}
+                        <tr>
+                            <td>{{project.jobName}}</td>
+                            <td>{{project.projectNumber}}</td>
+                            <td>
+                                <a href="/project/{{project.id}}">View</a>
+                                <a href="/edit/project/{{project.id}}">Edit</a>
+                                <a href="/destroy/project/{{project.id}}">Complete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 </html>
