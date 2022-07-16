@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <h1>Welcome {{user.firstName}}!</h1>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+    <form action="/create/project" method="post">
+        <h2>Add a New Project</h2>
+        {% with messages = get_flashed_messages(category_filter=['project']) %}
+            {% if messages %}
+            <div>
+                <strong>Error!</strong>
+                    {% for message in messages %}
+                    <p>{{message}}</p>
+                    {% endfor %}
+            </div>
+            {% endif %}
+        {% endwith %}
+        
+
+        <div>
+            <div>
+                <label for="client">Client:</label>
+                <input type="text" name="client">
+            </div>
+            <div>
+                <label for="jobName">Job Name:</label>
+                <input type="text" name="jobName">
+            </div>
+            <div>
+                <label for="projectNumber">Project Number:</label>
+                <input type="text" name="projectNumber">
+            </div>
+            <div>
+                <label for="projectManager">Project Manager:</label>
+                <input type="text" name="projectManager">
+            </div>
+            <div>
+                <label for="projectEngineer">Project Engineer:</label>
+                <input type="text" name="projectEngineer">
+            </div>
+            <div>
+                <label for="projectDesigner">Project Designer:</label>
+                <input type="text" name="projectDesigner">
+            </div>
+            <div>
+                <label for="caddLead">CADD Lead:</label>
+                <input type="text" name="caddLead">
+            </div>
+            
+            <input type="submit" value="Add Project">
+                
+        </div>
+    </form>
+</body>
+</html>

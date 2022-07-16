@@ -8,10 +8,10 @@ from flask_app.models.task import Task
 def newproject():
     if 'user_id' not in session:
         return redirect('/logout')
-    data = {
+    user_data = {
         "id":session['user_id']
     }
-    return render_template('newproject.html',user=User.getOne(data))
+    return render_template("newproject.html",user=User.getOne(user_data))
 
 @app.route('/create/project',methods=['POST'])
 def createproject():
@@ -42,6 +42,7 @@ def editproject(id):
     user_data = {
         "id":session['user_id']
     }
+    print(Project.getOne(data).jobName)
     return render_template("editproject.html",edit=Project.getOne(data),user=User.getOne(user_data))
 
 @app.route('/update/project',methods=['POST'])
@@ -49,7 +50,7 @@ def updateproject():
     if 'user_id' not in session:
         return redirect('/logout')
     if not Project.validate(request.form):
-        return redirect('/new/project')
+        return redirect('/dashboard')
     data = {
         "client": request.form["client"],
         "jobName": request.form["jobName"],
@@ -73,7 +74,7 @@ def showproject(id):
     user_data = {
         "id":session['user_id']
     }
-    return render_template("showproject.html",project=Project.getOne(data),user=User.getOne(user_data))
+    return render_template("showproject.html",project=Project.getOne(data),user=User.getOne(user_data),tasks=Task.getAllByProject(data))
 
 @app.route('/destroy/project/<int:id>')
 def completeproject(id):
@@ -82,5 +83,5 @@ def completeproject(id):
     data = {
         "id":id
     }
-    Project.destroy(data)
+    Project.delete(data)
     return redirect('/dashboard')

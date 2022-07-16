@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Show Project</title>
+    
+</head>
+<body>
+    <nav>
+        <h1>Welcome {{user.firstName}}!</h1>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+    <h1>{{project.jobName}} info:</h1>
+    <p>Client: {{project.client}}</p>
+    <p>Job Name: {{project.jobName}}</p>
+    <p>Project Number: {{project.projectNumber}}</p>
+    <p>Project Manager: {{project.projectManager}}</p>
+    <p>Project Engineer: {{project.projectEngineer}}</p>
+    <p>Project Designer: {{project.projectDesigner}}</p>
+    <p>CADD Lead: {{project.caddLead}}</p>
+
+    <div class="background">
+        <form action="/create/task" method="post">
+            <h2>Add a Task</h2>
+            {% with messages = get_flashed_messages(category_filter=['tasks']) %}
+                {% if messages %}
+                <div>
+                    <strong>Error!</strong>
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+            
+    
+            <div>
+                <input type="hidden" name="project_id" value="{{project.id}}">
+                <div>
+                    <label for="task">Task:</label>
+                    <input type="text" name="task">
+                </div>
+                
+                <input type="submit" value="Add Task">
+                    
+            </div>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Tasks</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                    <tr>
+                        <td><input type="checkbox" name="task"><label for="task" class="strikethrough">{{task.task}}</label>  <a href="/destroy/task/{{task.id}}/project/{{task.project_id}}">Remove</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

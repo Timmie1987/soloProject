@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    
+</head>
+<body>
+    <nav>
+        <h1>Welcome {{user.firstName}}!</h1>
+        <div>
+            <a href="/new/project">Add Project</a>
+            <a href="/logout">Logout</a>
+
+        </div>
+
+    </nav>
+    <div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Job Name</th>
+                    <th>Project Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for project in project %}
+                    <tr>
+                        <td>{{project.jobName}}</td>
+                        <td>{{project.projectNumber}}</td>
+                        <td>
+                            <a href="/project/{{project.id}}">View Tasks</a>
+                            <a href="/edit/project/{{project.id}}">Edit</a>
+                            <a href="/destroy/project/{{project.id}}">Complete Project</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
