@@ -5,69 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     <title>Edit Project</title>
     
 </head>
 <body style="background-color: darkgray">
-    <nav>
-        <h1>Welcome {{user.firstName}}!</h1>
-        <div>
-            <a href="/dashboard">Dashboard</a>
-            <a href="/logout">Logout</a>
-
-        </div>
-
-    </nav>
-    <form action="/update/project" method="post">
-        <h2>Edit Project</h2>
-        {% with messages = get_flashed_messages(category_filter=['project']) %}
-            {% if messages %}
-            <div>
-                <strong>Error!</strong>
-                    {% for message in messages %}
-                    <p>{{message}}</p>
-                    {% endfor %}
-            </div>
-            {% endif %}
-        {% endwith %}
-        
-        <div>
-            <input type="hidden" name="id" value="{{edit.id}}">
-            
-            <div>
-                <label for="client">Client:</label>
-                <input type="text" name="client" value="{{edit.client}}">
-            </div>
-            <div>
-                <label for="jobName">Job Name:</label>
-                <input type="text" name="jobName" value="{{edit.jobName}}">
-            </div>
-            <div>
-                <label for="projectNumber">Project Number:</label>
-                <input type="text" name="projectNumber" value="{{edit.projectNumber}}">
-            </div>
-            <div>
-                <label for="projectManager">Project Manager:</label>
-                <input type="text" name="projectManager" value="{{edit.projectManager}}">
-            </div>
-            <div>
-                <label for="projectEngineer">Project Engineer:</label>
-                <input type="text" name="projectEngineer" value="{{edit.projectEngineer}}">
-            </div>
-            <div>
-                <label for="projectDesigner">Project Designer:</label>
-                <input type="text" name="projectDesigner" value="{{edit.projectDesigner}}">
-            </div>
-            <div>
-                <label for="caddLead">CADD Lead:</label>
-                <input type="text" name="caddLead" value="{{edit.caddLead}}">
-            </div>
+    <div class="text-center">
+        <div class="banner">
+            <h2>Welcome {{user.firstName}}!</h2>
+            <h1 class="header">Project Manager</h1>
+                <div>
+                    <a href="/dashboard"><input type="button" value="Dashboard" class="btn btn-outline-success me-2"></a>
+                    <a href="/logout"><input type="button" value="Logout" class="btn btn-outline-success me-2"></a>
+                </div>
+        </div><br/>
+        <div class="container4">
+            <form action="/update/project" method="post">
+                <h2>Edit Project</h2><br/>
+                {% with messages = get_flashed_messages(category_filter=['project']) %}
+                    {% if messages %}
+                    <div>
+                        <strong>Error!</strong>
+                            {% for message in messages %}
+                            <p>{{message}}</p>
+                            {% endfor %}
+                    </div>
+                    {% endif %}
+                {% endwith %}
                 
-            <input type="submit" value="Update Project">
+                <div>
+                    <input type="hidden" name="id" value="{{edit.id}}">
                     
-            
+                    <div class="form-floating mb-3">
+                        <input type="text" name="client" value="{{edit.client}}" class="form-control" placeholder="Client">
+                        <label for="client">Client:</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="jobName" value="{{edit.jobName}}" class="form-control" placeholder="Job Name">
+                        <label for="jobName">Job Name:</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="projectNumber" value="{{edit.projectNumber}}" class="form-control" placeholder="Project Number">
+                        <label for="projectNumber">Project Number:</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="projectManager" value="{{edit.projectManager}}" class="form-control" placeholder="Project Manager">
+                        <label for="projectManager">Project Manager:</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="projectEngineer" value="{{edit.projectEngineer}}" class="form-control" placeholder="Project Engineer">
+                        <label for="projectEngineer">Project Engineer:</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="projectDesigner" value="{{edit.projectDesigner}}" class="form-control" placeholder="Project Designer">
+                        <label for="projectDesigner">Project Designer:</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" name="caddLead" value="{{edit.caddLead}}" class="form-control" placeholder="CADD Lead">
+                        <label for="caddLead">CADD Lead:</label>
+                    </div>
+                        
+                    <input type="submit" value="Update Project" class="btn btn-outline-success me-2">
+                            
+                    
+                </div>
+            </form>
         </div>
-    </form>
+    </div>
 </body>
 </html>
