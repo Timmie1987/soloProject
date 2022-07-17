@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="static/style.css">
     <title>Document</title>
 </head>
-<body style="background-color: darkgray">
-    <div>
+<body class="text-center" style="background-color: darkgray">
+        
+    <div class="logincontainer">
+        <h1 class="header">Project Manager</h1>
         <form action="/register" method="post">
             <h2>Register</h2>
             {% with messages = get_flashed_messages(category_filter=['register']) %}
@@ -22,33 +24,34 @@
                 </div>
                 {% endif %}
             {% endwith %}
-            <div>
+            <div class="form-floating mb-3">
+                <input type="text" name="firstName" class="form-control" placeholder="First Name">
                 <label for="firstName">First Name:</label>
-                <input type="text" name="firstName">
             </div>
-            <div>
+            <div class="form-floating mb-3">
+                <input type="text" name="lastName" class="form-control" placeholder="Last Name">
                 <label for="lastName">Last Name:</label>
-                <input type="text" name="lastName">
             </div>
-            <div>
+            <div class="form-floating mb-3">
+                <input type="text" name="company" class="form-control" placeholder="Company">
                 <label for="company">Company:</label>
-                <input type="text" name="company">
             </div>
-            <div>
+            <div class="form-floating mb-3">
+                <input type="text" name="email" class="form-control" placeholder="Email">
                 <label for="email">Email:</label>
-                <input type="text" name="email">
             </div>
-            <div>
+            <div class="form-floating mb-3">
+                <input type="password" name="password" class="form-control" placeholder="Password">
                 <label for="password">Password:</label>
-                <input type="password" name="password">
             </div>
-            <div>
+            <div class="form-floating mb-3">
+                <input type="password" name="confirm" class="form-control" placeholder="Confirm Password">
                 <label for="confirm">Confirm Password:</label>
-                <input type="password" name="confirm">
             </div>
-            <input type="submit" value="Register">
+            <input type="submit" value="Register" class="btn btn-outline-success me-2">
         </form>
-        <button><a href="/">Go Back</a></button>
+        <a href="/">
+            <input type="button" value="Go Back" class="btn btn-outline-success me-2"></a>
         
     </div>
 </body>

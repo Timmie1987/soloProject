@@ -33,12 +33,12 @@
                 <tbody>
                     {% for project in project %}
                         <tr>
-                            <td>{{project.jobName}}</td>
-                            <td>{{project.projectNumber}}</td>
+                            <td><font face="monospace" style=font-size:20px>{{project.jobName}}</font></td>
+                            <td><font face="monospace" style=font-size:20px>{{project.projectNumber}}</font></td>
                             <td>
-                                <a href="/project/{{project.id}}">View</a>
-                                <a href="/edit/project/{{project.id}}">Edit</a>
-                                <a href="/destroy/project/{{project.id}}">Complete</a>
+                                <a href="/project/{{project.id}}"><input type="button" value="View" class="btn btn-primary btn-sm"></a>
+                                <a href="/edit/project/{{project.id}}"><input type="button" value="Edit" class="btn btn-primary btn-sm"></a>
+                                <a href="/destroy/project/{{project.id}}"><input type="button" value="Complete" class="btn btn-primary btn-sm"></a>
                             </td>
                         </tr>
                     {% endfor %}
