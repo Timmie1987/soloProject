@@ -38,9 +38,9 @@ class Task:
         return  connectToMySQL(cls.db).query_db(query, data)
 
     @staticmethod
-    def validate(tasks):
+    def validate_task(tasks):
         isValid = True
         if len(tasks['task']) < 3:
             isValid = False
-            flash("Task must be more than 3 characters")
+            flash("Task must be more than 3 characters", "tasks")
         return isValid

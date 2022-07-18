@@ -12,35 +12,37 @@
 <body class="text-center" style="background-color: darkgray">
     <div>
         <div class="logincontainer">
-            <h1 class="header">Project Manager</h1><br/>
-                <form action="/login" method="post">
-                    <h3>Login</h3>
-                    {% with messages = get_flashed_messages(category_filter=['login']) %}
-                        {% if messages %}
-                        <div>
-                            <strong>Error!</strong>
-                                {% for message in messages %}
-                                <p>{{message}}</p>
-                                {% endfor %}
-                        </div>
-                        {% endif %}
-                    {% endwith %}
-                    
-                    <div class="form-floating mb-3">
-                        
-                        <input type="text" name="email" class="form-control" placeholder="name@example.com">
-                        <label for="email">Email:</label>
-                    </div><br/>
-                    <div class="form-floating">
-                        
-                        <input type="password" name="password" class="form-control" placeholder="Password">
-                        <label for="password">Password:</label>
-                    </div><br/>
-                    
-                    <input type="submit" value="Login" class="btn btn-outline-success me-2">
-                </form><br/>
-                <a href="/register">
-                <input type="button" value="Register" class="btn btn-outline-success me-2"></a>
+            <h1 class="header">Project Manager</h1>
+            <i>"Keeping your project tasks organized since 2022"</i>
+            <form action="/login" method="post">
+            <br/>
+            <h3 class="header2">Login</h3>
+            {% with messages = get_flashed_messages(category_filter=['login']) %}
+                {% if messages %}
+                <div>
+                    <strong>Error!</strong>
+                        {% for message in messages %}
+                        <p>{{message}}</p>
+                        {% endfor %}
+                </div>
+                {% endif %}
+            {% endwith %}
+            
+            <div class="form-floating mb-3">
+                
+                <input type="text" name="email" class="form-control" placeholder="name@example.com">
+                <label for="email">Email:</label>
+            </div>
+            <div class="form-floating">
+                
+                <input type="password" name="password" class="form-control" placeholder="Password">
+                <label for="password">Password:</label>
+            </div><br/>
+            
+            <input type="submit" value="Login" class="btn btn-outline-success me-2">
+            </form><br/>
+            <a href="/register">
+            <input type="button" value="Register" class="btn btn-outline-success me-2"></a>
         </div>
     </div>
 </body>

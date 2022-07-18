@@ -12,7 +12,7 @@
 <body style="background-color: darkgray">
     <div class="text-center">
         <div class="banner">
-            <h2>Welcome {{user.firstName}}!</h2>
+            <h2 class="header2">Welcome {{user.firstName}}!</h2>
             <h1 class="header">Project Manager</h1>
                 <div>
                     <a href="/dashboard"><input type="button" value="Dashboard" class="btn btn-outline-success me-2"></a>
@@ -21,7 +21,7 @@
         </div><br/>
         <div class="container4">
             <form action="/update/project" method="post">
-                <h2>Edit Project</h2><br/>
+                <h2 class="header2">Edit Project</h2><br/>
                 {% with messages = get_flashed_messages(category_filter=['project']) %}
                     {% if messages %}
                     <div>

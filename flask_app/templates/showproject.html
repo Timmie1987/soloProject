@@ -12,7 +12,7 @@
 <body style="background-color: darkgray">
     <div class="text-center">
         <div class="banner">
-            <h2>Welcome {{user.firstName}}!</h2>
+            <h2 class="header2">Welcome {{user.firstName}}!</h2>
             <h1 class="header">Project Manager</h1>
                 <div>
                 <a href="/dashboard"><input type="button" value="Dashboard" class="btn btn-outline-success me-2"></a>
@@ -49,7 +49,7 @@
 
             <div>
                 <form action="/create/task" method="post">
-                    <h2>Add a Task</h2>
+                    <h2 class="header2">Add a Task</h2>
                     {% with messages = get_flashed_messages(category_filter=['tasks']) %}
                         {% if messages %}
                         <div>

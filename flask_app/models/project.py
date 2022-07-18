@@ -54,22 +54,22 @@ class Project:
         isValid = True
         if len(project['client']) < 3:
             isValid = False
-            flash("Client name must be at least 3 characters")
+            flash("Client name must be at least 3 characters", "project")
         if len(project['jobName']) < 3:
             isValid = False
-            flash("Job name must be at least 3 characters")
+            flash("Job name must be at least 3 characters", "project")
         if len(project['projectNumber']) != 5:
             isValid = False
-            flash("Invalid project number")
+            flash("Invalid project number", "project")
         if len(project['projectManager']) < 3:
             isValid = False
-            flash("Project manager must be at least 3 characters")
+            flash("Project manager must be at least 3 characters", "project")
         if len(project['projectEngineer']) < 3:
             isValid = False
-            flash("Project engineer must be at least 3 characters")
+            flash("Project engineer must be at least 3 characters", "project")
         if len(project['caddLead']) < 3:
             isValid = False
-            flash("CADD Lead must be at least 3 characters")
+            flash("CADD Lead must be at least 3 characters", "project")
         return isValid
 
 

@@ -50,7 +50,7 @@ def updateproject():
     if 'user_id' not in session:
         return redirect('/logout')
     if not Project.validate(request.form):
-        return redirect('/dashboard')
+        return redirect(f'/edit/project/{request.form["id"]}')
     data = {
         "client": request.form["client"],
         "jobName": request.form["jobName"],

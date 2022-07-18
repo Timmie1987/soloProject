@@ -8,7 +8,7 @@ from flask_app.models.task import Task
 def createtask():
     if 'user_id' not in session:
         return redirect('/logout')
-    if not Task.validate(request.form):
+    if not Task.validate_task(request.form):
         return redirect(f'/project/{request.form["project_id"]}')
     data = {
         "task": request.form["task"],

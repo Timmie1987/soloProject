@@ -52,6 +52,12 @@ input[type=checkbox]:checked + label.strikethrough{
 .header{
     font-size: 50px;
     font-family: monospace;
+    font-weight: bold;
+}
+
+.header2{
+    font-size: 35px;
+    font-family: monospace;
 }
 
 .banner{
